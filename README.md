@@ -1,8 +1,6 @@
 # Claude Code Direct - Browser Extension
 
-Send webpage elements directly to Claude for instant debugging help. Click any element, describe the issue, and Claude sees it immediately.
-
-![Claude Code Direct Demo](demo.gif)
+Send webpage elements directly to Claude for instant debugging help. Click any element, describe the issue, and Claude analyzes it immediately.
 
 ## 🚀 Quick Start
 
@@ -41,7 +39,7 @@ The installer will:
 ## 📖 How to Use
 
 ### In Claude:
-1. Type `/browser` or say "start browser session"
+1. Type `/browser`
 2. Claude gives you a 6-character session ID (like `ABC123`)
 
 ### In Chrome:
@@ -54,17 +52,30 @@ The installer will:
 7. Click "Send to Claude"
 
 ### Back in Claude:
-Your element appears instantly with all the details!
+1. Type `check`
+2. Claude immediately sees and analyzes your element!
 
-## 🎯 Features
+## 🎯 Example Workflow
+
+```
+You: /browser
+Claude: Session ID: ABC123
+
+[In browser: Enter ABC123, click broken button]
+
+You: check
+Claude: I see you clicked a button that's not working. The issue is...
+```
+
+## 🛠️ Features
 
 - **Direct Connection**: Elements sent directly to your active Claude chat
-- **No Manual Server**: Server starts automatically on Windows/Mac/Linux
-- **Rich Element Data**: Captures HTML, CSS, position, and more
-- **Smart Analysis**: Claude can see exactly what you're clicking
+- **Smart Analysis**: Claude sees HTML, CSS, position, and all element details
 - **Session-Based**: Each Claude chat gets its own session
+- **Auto-Start Server**: Server runs automatically after setup (Windows/Mac/Linux)
+- **Simple Commands**: Just type `/browser` and `check`
 
-## 🛠️ Manual Setup
+## 🔧 Manual Setup
 
 If the installer doesn't work or you prefer manual setup:
 
@@ -88,30 +99,39 @@ cp com.claudedirect.server.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.claudedirect.server.plist
 ```
 
-## 🔧 Troubleshooting
+## ❓ Troubleshooting
 
 ### "Failed to send" error
 - Make sure the server is running: `node claude-direct-server.js`
-- Check Windows firewall isn't blocking port 3180
+- Check if port 3180 is blocked by firewall
+- Try restarting the server
 
 ### Extension not working
-- Refresh the page after installing
+- Refresh the page after installing extension
 - Make sure you entered the correct session ID
+- Click "Reload" on the extension in chrome://extensions/
 
 ### Server won't start
 - Install Node.js first: https://nodejs.org/
-- Run as administrator if needed
+- Check if port 3180 is already in use
+- Run installer as administrator if needed
 
 ## 📁 Project Structure
 
 ```
 claude-code-direct/
-├── manifest.json          # Chrome extension config
-├── popup-claude-driven.html/js  # Extension UI
-├── content-simple.js      # Page interaction
-├── claude-direct-server.js # Local server
-├── INSTALL.bat           # Windows installer
-└── claude-sessions/      # Session data storage
+├── manifest.json              # Chrome extension config
+├── popup-claude-driven.html   # Extension popup UI
+├── popup-claude-driven.js     # Extension popup logic
+├── content-simple.js          # Page interaction script
+├── background.js              # Extension background script
+├── claude-direct-server.js    # Local server
+├── claude-direct-launcher.js  # Server manager
+├── browser-session.js         # Session management
+├── INSTALL.bat               # Windows installer
+├── install.sh                # Mac/Linux installer
+├── package.json              # Node.js config
+└── claude-sessions/          # Session data storage
 ```
 
 ## 🤝 Contributing
@@ -124,4 +144,4 @@ MIT License - feel free to use this in your own projects!
 
 ---
 
-Made with ❤️ for Claude users who need to debug web pages quickly.
+Made with ❤️ to help Claude users debug web pages quickly.
