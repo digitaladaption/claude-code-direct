@@ -7,14 +7,16 @@ Send webpage elements directly to Claude for instant debugging help. Click any e
 ### 1. Download & Install
 
 ```bash
-git clone https://github.com/yourusername/claude-code-direct.git
+git clone https://github.com/digitaladaption/claude-code-direct.git
 cd claude-code-direct
 ```
 
 ### 2. Run the Installer
 
 #### Windows:
-Double-click `INSTALL.bat`
+```cmd
+.\INSTALL.bat
+```
 
 #### Mac/Linux:
 ```bash
@@ -145,3 +147,9 @@ MIT License - feel free to use this in your own projects!
 ---
 
 Made with ❤️ to help Claude users debug web pages quickly.
+
+## ☕ Support
+
+If you have found this useful, then a coffee would be lovely https://coff.ee/mattyhatton
+
+Much love.
