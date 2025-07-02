@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Claude Code Direct",
+  "version": "5.0",
+  "description": "Send webpage elements directly to Claude Code",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost/*"
+  ],
+  "action": {
+    "default_popup": "popup-claude-driven.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-simple.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

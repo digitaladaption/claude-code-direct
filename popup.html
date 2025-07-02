@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 300px;
+      padding: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 18px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .start-btn {
+      background: #007bff;
+      color: white;
+    }
+    .start-btn:hover {
+      background: #0056b3;
+    }
+    .settings {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .session-status {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .connection-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .indicator-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #dc3545;
+    }
+    .indicator-dot.connected {
+      background: #28a745;
+    }
+    .indicator-dot.partial {
+      background: #ffc107;
+    }
+  </style>
+</head>
+<body>
+  <h2>Claude Code Annotator</h2>
+  
+  <div id="sessionStatus" class="session-status">
+    <div class="connection-indicator">
+      <span class="indicator-dot" id="connectionDot"></span>
+      <span id="connectionText">Checking connection...</span>
+    </div>
+  </div>
+  
+  <button id="startAnnotating" class="start-btn">Start Annotating</button>
+  
+  <div class="settings">
+    <label>
+      Claude Code Port:
+      <input type="number" id="port" value="3180">
+    </label>
+  </div>
+  
+  <div id="status" class="status" style="display: none;"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

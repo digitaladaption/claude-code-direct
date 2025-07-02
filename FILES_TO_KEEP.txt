@@ -1,0 +1,32 @@
+# Essential files for the GitHub repo:
+
+## Core Extension Files
+- manifest.json
+- popup-claude-driven.html
+- popup-claude-driven.js
+- content-simple.js
+- background.js
+
+## Server Files
+- claude-direct-server.js
+- claude-direct-launcher.js
+- browser-session.js
+
+## Setup Files
+- INSTALL.bat
+- README.md
+- package.json
+- .gitignore
+
+## Assets
+- icon.svg
+
+## Directory
+- claude-sessions/ (empty, with .gitkeep)
+
+# Files to DELETE before publishing:
+- All other HTML/JS files (old versions)
+- Test files (test-server.html)
+- Session JSON files in claude-sessions/
+- Alternative manifest files
+- Old documentation files

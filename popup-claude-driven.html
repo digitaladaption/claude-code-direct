@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 380px;
+      padding: 0;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .header p {
+      margin: 5px 0 0 0;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .session-card {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .session-id {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: monospace;
+      text-align: center;
+      color: #495057;
+      letter-spacing: 3px;
+      margin: 10px 0;
+    }
+    .session-info {
+      font-size: 13px;
+      color: #6c757d;
+      text-align: center;
+    }
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin: 10px 0;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #4caf50;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    button {
+      flex: 1;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .primary-btn {
+      background: #007bff;
+      color: white;
+    }
+    .primary-btn:hover:not(:disabled) {
+      background: #0056b3;
+      transform: translateY(-1px);
+    }
+    .primary-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .secondary-btn {
+      background: #6c757d;
+      color: white;
+    }
+    .secondary-btn:hover {
+      background: #545b62;
+    }
+    .input-group {
+      margin: 15px 0;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #495057;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #e9ecef;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: monospace;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .input-group input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    .help-text {
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+    .element-counter {
+      background: #fff3cd;
+      color: #856404;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .instructions {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .instructions h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: #495057;
+    }
+    .instructions ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .instructions li {
+      margin-bottom: 8px;
+    }
+    .instructions code {
+      background: #e9ecef;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 13px;
+    }
+    .status-message {
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .status-message.error {
+      background: #fee;
+      color: #dc3545;
+      border: 1px solid #fcc;
+    }
+    .status-message.info {
+      background: #e7f3ff;
+      color: #0066cc;
+      border: 1px solid #b3d9ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Claude Code Direct</h2>
+    <p>Send webpage elements to Claude</p>
+  </div>
+  
+  <div class="content">
+    <!-- Join Session View (default) -->
+    <div id="joinSessionView">
+      <div class="instructions">
+        <h3>How to Connect:</h3>
+        <ol>
+          <li>In Claude, type <code>/browser</code> or say <code>start browser session</code></li>
+          <li>Claude will give you a 6-character session ID</li>
+          <li>Enter that ID below and click Join</li>
+        </ol>
+      </div>
+      
+      <div class="input-group">
+        <label>Enter Session ID from Claude:</label>
+        <input type="text" id="sessionIdInput" placeholder="ABC123" maxlength="6" autocomplete="off">
+      </div>
+      
+      <button class="primary-btn" id="joinSession" disabled>Join Session</button>
+      
+      <div id="joinStatus" class="status-message" style="display: none;"></div>
+    </div>
+    
+    <!-- Active Session View -->
+    <div id="activeSessionView" style="display: none;">
+      <div class="session-card">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          Connected to Claude
+        </div>
+        <div class="session-id" id="currentSessionId">ABC123</div>
+        <div class="session-info" id="sessionInfo">Ready to capture elements</div>
+      </div>
+      
+      <div class="element-counter" id="elementCounter" style="display: none;">
+        <span id="elementCount">0</span> elements sent to Claude
+      </div>
+      
+      <div class="action-buttons">
+        <button class="primary-btn" id="startCapture">Start Capturing</button>
+        <button class="secondary-btn" id="endSession">Disconnect</button>
+      </div>
+      
+      <div class="help-text">
+        <strong>How to capture:</strong><br>
+        • Click "Start Capturing"<br>
+        • Hover and click any element on the page<br>
+        • Add a note and send to Claude<br>
+        • Press ESC to stop capturing
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup-claude-driven.js"></script>
+</body>
+</html>

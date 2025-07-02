@@ -1,0 +1,27 @@
+{
+  "name": "claude-code-direct",
+  "version": "1.0.0",
+  "description": "Browser extension to send webpage elements directly to Claude for debugging",
+  "main": "claude-direct-server.js",
+  "scripts": {
+    "start": "node claude-direct-server.js",
+    "install-windows": "INSTALL.bat",
+    "setup": "node claude-direct-launcher.js start"
+  },
+  "keywords": [
+    "claude",
+    "chrome-extension",
+    "debugging",
+    "web-development",
+    "browser-extension"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/claude-code-direct.git"
+  }
+}

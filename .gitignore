@@ -1,0 +1,29 @@
+# Node
+node_modules/
+npm-debug.log
+
+# Session data
+claude-sessions/
+*.json
+!manifest.json
+!package.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+.claude-direct.pid
+
+# Build/Test files
+*.test.js
+coverage/
+
+# Keep the structure but not the data
+!claude-sessions/.gitkeep
